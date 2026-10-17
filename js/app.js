@@ -112,12 +112,13 @@
   }
 
   // ---------- Pontos de descarte ----------
-  const bairroTexto = (p) => (/CONFERIR/.test(p.bairro) ? "Outros" : p.bairro);
+  const semBairro = (p) => !p.bairro || /CONFERIR/.test(p.bairro);
+  const bairroTexto = (p) => (semBairro(p) ? "Outros" : p.bairro);
 
   function linkMapa(p) {
     const consulta = p.lat != null && p.lng != null
       ? p.lat + "," + p.lng
-      : [p.endereco, /CONFERIR/.test(p.bairro) ? "" : p.bairro, "Fortaleza, CE"].filter(Boolean).join(", ");
+      : [p.endereco, semBairro(p) ? "" : p.bairro, "Fortaleza, CE"].filter(Boolean).join(", ");
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(consulta);
   }
 
@@ -125,7 +126,7 @@
     return el("li", { class: "ponto" },
       el("strong", { text: p.nome }),
       el("span", { class: "tipo", text: p.tipo }),
-      el("span", { text: p.endereco + " – " + bairroTexto(p) }),
+      el("span", { text: semBairro(p) ? p.endereco : p.endereco + " – " + p.bairro }),
       el("span", { text: "Horário: " + (p.horario || "Consultar") }),
       p.telefone ? el("span", { text: "Telefone: " + p.telefone }) : null,
       p.obs ? el("span", { text: p.obs }) : null,
