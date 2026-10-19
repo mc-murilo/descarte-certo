@@ -1,4 +1,4 @@
-const ULTIMA_ATUALIZACAO = "17/10/2026";
+const ULTIMA_ATUALIZACAO = "18/10/2026";
 
 const MATERIAIS = [
   {
@@ -113,7 +113,7 @@ const MATERIAIS = [
     id: "reciclavel-comum",
     nome: "Recicláveis",
     destino: "ponto",
-    termos: ["papel", "papelao", "plastico", "pet", "garrafa", "lata", "aluminio", "metal", "vidro", "caixa de leite", "longa vida", "coleta seletiva", "reciclagem", "embalagem"],
+    termos: ["papel", "papelao", "plastico", "pet", "garrafa", "lata", "aluminio", "metal", "vidro", "caixa de leite", "embalagem"],
     instrucao: [
       "Lave rapidamente as embalagens para tirar restos de comida.",
       "Deixe secar e separe do lixo orgânico.",
